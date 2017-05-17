@@ -1,0 +1,13 @@
+{
+  "name": "ueef/phalcon-properties-model",
+  "type": "library",
+  "require": {
+    "php": "7.*",
+    "ext-phalcon": "3.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Ueef\\Phalcon\\PropertiesModel\\": "src"
+    }
+  }
+}
