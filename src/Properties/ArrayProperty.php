@@ -11,7 +11,7 @@ namespace Ueef\Phalcon\PropertiesModel\Properties {
             }
 
             if (null !== $value) {
-                $value = json_encode($value);
+                $value = json_encode($value, JSON_UNESCAPED_UNICODE);
             }
 
             return $value;
@@ -20,7 +20,7 @@ namespace Ueef\Phalcon\PropertiesModel\Properties {
         protected function unpack($value)
         {
             if (null !== $value) {
-                $value = json_decode($value);
+                $value = json_decode($value, true);
             }
 
             return $value;
