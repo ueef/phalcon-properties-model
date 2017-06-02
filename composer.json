@@ -3,7 +3,8 @@
   "type": "library",
   "require": {
     "php": "7.*",
-    "ext-phalcon": "3.*"
+    "ext-phalcon": "3.*",
+    "ueef/assignable": "*"
   },
   "autoload": {
     "psr-4": {
