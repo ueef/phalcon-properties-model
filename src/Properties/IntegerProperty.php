@@ -2,11 +2,13 @@
 
 namespace Ueef\Phalcon\PropertiesModel\Properties {
 
-    class IntegerProperty extends NumericProperty
+    class IntegerProperty extends AbstractProperty
     {
         protected function pack($value)
         {
-            $value = parent::pack($value);
+            if (!is_numeric($value)) {
+                $value = null;
+            }
 
             if (null !== $value) {
                 $value = (int) $value;
@@ -17,7 +19,9 @@ namespace Ueef\Phalcon\PropertiesModel\Properties {
 
         protected function unpack($value)
         {
-            $value = parent::unpack($value);
+            if (!is_numeric($value)) {
+                $value = null;
+            }
 
             if (null !== $value) {
                 $value = (int) $value;
