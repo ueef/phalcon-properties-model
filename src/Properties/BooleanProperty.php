@@ -2,16 +2,15 @@
 
 namespace Ueef\Phalcon\PropertiesModel\Properties {
 
+    use Ueef\Phalcon\PropertiesModel\Traits\BooleanFilterTrait;
+
     class BooleanProperty extends AbstractProperty
     {
-        protected function pack($value)
-        {
-            return $value ? 1 : 0;
-        }
+        use BooleanFilterTrait;
 
-        protected function unpack($value)
+        protected function filter($value)
         {
-            return $value ? true : false;
+            return $this->booleanFilter($value);
         }
     }
 }

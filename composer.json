@@ -4,6 +4,7 @@
   "require": {
     "php": "7.*",
     "ext-phalcon": "3.*",
+    "ueef/packable": "*",
     "ueef/assignable": "*"
   },
   "autoload": {

@@ -2,28 +2,15 @@
 
 namespace Ueef\Phalcon\PropertiesModel\Properties {
 
-    class ArrayProperty extends AbstractProperty
+    use Ueef\Phalcon\PropertiesModel\Traits\ArrayFilterTrait;
+
+    class ArrayProperty extends AbstractEncodedProperty
     {
-        protected function pack($value)
+        use ArrayFilterTrait;
+
+        protected function filter($value)
         {
-            if (!is_array($value)) {
-                $value = null;
-            }
-
-            if (null !== $value) {
-                $value = json_encode($value, JSON_UNESCAPED_UNICODE);
-            }
-
-            return $value;
-        }
-
-        protected function unpack($value)
-        {
-            if (null !== $value) {
-                $value = json_decode($value, true);
-            }
-
-            return $value;
+            return $this->arrayFilter($value);
         }
     }
 }

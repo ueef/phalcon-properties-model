@@ -56,7 +56,19 @@ namespace Ueef\Phalcon\PropertiesModel\Properties {
             $item->{$this->key} = $value;
         }
 
-        abstract protected function pack($value);
-        abstract protected function unpack($value);
+        protected function pack($value)
+        {
+            return $this->filter($value);
+        }
+
+        protected function unpack($value)
+        {
+            return $this->filter($value);
+        }
+
+        protected function filter($value)
+        {
+            return $value;
+        }
     }
 }

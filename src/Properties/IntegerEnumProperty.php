@@ -2,21 +2,20 @@
 
 namespace Ueef\Phalcon\PropertiesModel\Properties {
 
-    class IntegerEnumProperty extends IntegerProperty
+    use Ueef\Phalcon\PropertiesModel\Traits\EnumFilterTrait;
+    use Ueef\Phalcon\PropertiesModel\Traits\IntegerFilterTrait;
+
+    class IntegerEnumProperty extends AbstractProperty
     {
-        /**
-         * @var array
-         */
-        protected $values = [];
+        use EnumFilterTrait;
+        use IntegerFilterTrait;
 
-
-        protected function pack($value)
+        protected function filter($value)
         {
-            if (!in_array($value, $this->values)) {
-                $value = null;
-            }
+            $value = $this->integerFilter($value);
+            $value = $this->enumFilter($value);
 
-            return parent::pack($value);
+            return $value;
         }
     }
 }

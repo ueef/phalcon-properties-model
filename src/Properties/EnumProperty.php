@@ -2,26 +2,15 @@
 
 namespace Ueef\Phalcon\PropertiesModel\Properties {
 
+    use Ueef\Phalcon\PropertiesModel\Traits\EnumFilterTrait;
+
     class EnumProperty extends AbstractProperty
     {
-        /**
-         * @var array
-         */
-        protected $values = [];
+        use EnumFilterTrait;
 
-
-        protected function pack($value)
+        protected function filter($value)
         {
-            if (!in_array($value, $this->values)) {
-                $value = null;
-            }
-
-            return $value;
-        }
-
-        protected function unpack($value)
-        {
-            return $value;
+            return $this->enumFilter($value);
         }
     }
 }

@@ -2,21 +2,23 @@
 
 namespace Ueef\Phalcon\PropertiesModel\Properties {
 
-    class IntegerArrayProperty extends ArrayProperty
+    use Ueef\Phalcon\PropertiesModel\Traits\ArrayFilterTrait;
+    use Ueef\Phalcon\PropertiesModel\Traits\IntegerFilterTrait;
+
+    class IntegerArrayProperty extends AbstractEncodedProperty
     {
-        protected function pack($value)
+        use ArrayFilterTrait;
+        use IntegerFilterTrait;
+
+        protected function filter($value)
         {
-            if (is_array($value)) {
-                $value = array_filter($value, 'is_numeric');
-                $value = array_map('intval', $value);
+            $value = $this->arrayFilter($value);
+
+            foreach ($value as &$_value) {
+                $_value = $this->integerFilter($_value);
             }
 
-            return parent::pack($value);
-        }
-
-        protected function unpack($value)
-        {
-            return parent::unpack($value);
+            return $value;
         }
     }
 }

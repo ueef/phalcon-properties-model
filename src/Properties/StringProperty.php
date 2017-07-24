@@ -2,16 +2,15 @@
 
 namespace Ueef\Phalcon\PropertiesModel\Properties {
 
+    use Ueef\Phalcon\PropertiesModel\Traits\StringFilterTrait;
+
     class StringProperty extends AbstractProperty
     {
-        protected function pack($value)
-        {
-            return trim($value);
-        }
+        use StringFilterTrait;
 
-        protected function unpack($value)
+        protected function filter($value)
         {
-            return $value;
+            return $this->stringFilter($value);
         }
     }
 }

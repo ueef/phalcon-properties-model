@@ -2,28 +2,15 @@
 
 namespace Ueef\Phalcon\PropertiesModel\Properties {
 
-    class FloatProperty extends NumericProperty
+    use Ueef\Phalcon\PropertiesModel\Traits\FloatFilterTrait;
+
+    class FloatProperty extends AbstractProperty
     {
-        protected function pack($value)
+        use FloatFilterTrait;
+
+        protected function filter($value)
         {
-            $value = parent::pack($value);
-
-            if (null !== $value) {
-                $value = (float) $value;
-            }
-
-            return $value;
-        }
-
-        protected function unpack($value)
-        {
-            $value = parent::unpack($value);
-
-            if (null !== $value) {
-                $value = (float) $value;
-            }
-
-            return $value;
+            return $this->floatFilter($value);
         }
     }
 }
