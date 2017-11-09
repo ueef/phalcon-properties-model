@@ -2,18 +2,26 @@
 
 namespace Ueef\Phalcon\PropertiesModel\Properties {
 
-    class PackableProperty extends AbstractEncodedProperty
+    use Ueef\Packable\Interfaces\PackableInterface;
+    use Ueef\Typer\Interfaces\TypeInterface;
+
+    class PackableProperty extends EncodedProperty
     {
         /**
-         * @var string
+         * @var PackableInterface
          */
-        private $classname;
+        private $proto;
 
+
+        public function __construct($key, TypeInterface $type, PackableInterface $proto)
+        {
+            parent::__construct($key, $type);
+
+            $this->proto = $proto;
+        }
 
         protected function pack($value)
         {
-            $value = $this->filter($value);
-
             if ($value) {
                 $value = $value->pack();
             }
@@ -26,7 +34,7 @@ namespace Ueef\Phalcon\PropertiesModel\Properties {
             $value = parent::unpack($value);
 
             if ($value) {
-                $value = $this->classname::unpack($value);
+                $value = $this->proto::unpack($value);
             }
 
             return $value;

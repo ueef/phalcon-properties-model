@@ -5,21 +5,23 @@ namespace Ueef\Phalcon\PropertiesModel\Properties {
     use Ueef\Assignable\Traits\AssignableTrait;
     use Ueef\Assignable\Interfaces\AssignableInterface;
     use Ueef\Phalcon\PropertiesModel\Interfaces\PropertyInterface;
+    use Ueef\Typer\Interfaces\TypeInterface;
 
-    abstract class AbstractProperty implements PropertyInterface, AssignableInterface
+    class RegularProperty implements PropertyInterface, AssignableInterface
     {
         use AssignableTrait;
 
-        /**
-         * @var string
-         */
+        /** @var string */
         protected $key;
 
+        /** @var TypeInterface */
+        protected $type;
 
-        public function __construct(string $key, array $parameters = [])
+
+        public function __construct(string $key, TypeInterface $type)
         {
             $this->key = $key;
-            $this->assign($parameters);
+            $this->type = $type;
         }
 
         public function getKey(): string
@@ -68,7 +70,7 @@ namespace Ueef\Phalcon\PropertiesModel\Properties {
 
         protected function filter($value)
         {
-            return $value;
+            return $this->type->convert($value);
         }
     }
 }

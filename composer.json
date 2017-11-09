@@ -1,11 +1,13 @@
 {
   "name": "ueef/phalcon-properties-model",
   "type": "library",
+  "description": "",
   "require": {
-    "php": "7.*",
-    "ext-phalcon": "3.*",
-    "ueef/packable": "*",
-    "ueef/assignable": "*"
+    "php": ">=5.4",
+    "ext-phalcon": ">=2.8",
+    "ueef/typer": "^0.0.3",
+    "ueef/packable": "^0.0.1",
+    "ueef/assignable": "^0.0.4"
   },
   "autoload": {
     "psr-4": {

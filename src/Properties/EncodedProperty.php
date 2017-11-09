@@ -2,7 +2,7 @@
 
 namespace Ueef\Phalcon\PropertiesModel\Properties {
 
-    abstract class AbstractEncodedProperty extends AbstractProperty
+    class EncodedProperty extends RegularProperty
     {
         protected function pack($value)
         {
