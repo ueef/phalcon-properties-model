@@ -18,7 +18,7 @@ namespace Ueef\Phalcon\PropertiesModel\Properties {
         protected $type;
 
 
-        public function __construct(string $key, TypeInterface $type)
+        public function __construct(string $key, TypeInterface $type = null)
         {
             $this->key = $key;
             $this->type = $type;
@@ -60,16 +60,19 @@ namespace Ueef\Phalcon\PropertiesModel\Properties {
 
         protected function pack($value)
         {
-            return $this->filter($value);
+            if (null !== $this->type) {
+                return $value;
+            }
+
+            return $this->type->convert($value);
         }
 
         protected function unpack($value)
         {
-            return $this->filter($value);
-        }
+            if (null === $this->type) {
+                return $value;
+            }
 
-        protected function filter($value)
-        {
             return $this->type->convert($value);
         }
     }
