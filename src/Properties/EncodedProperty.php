@@ -6,6 +6,8 @@ namespace Ueef\Phalcon\PropertiesModel\Properties {
     {
         protected function pack($value)
         {
+            $value = parent::pack($value);
+
             if (null !== $value) {
                 $value = json_encode($value, JSON_UNESCAPED_UNICODE);
             }
@@ -19,7 +21,7 @@ namespace Ueef\Phalcon\PropertiesModel\Properties {
                 $value = json_decode($value, true);
             }
 
-            return $value;
+            return parent::pack($value);
         }
     }
 }
