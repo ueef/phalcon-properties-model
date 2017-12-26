@@ -60,7 +60,7 @@ namespace Ueef\Phalcon\PropertiesModel\Properties {
 
         protected function pack($value)
         {
-            if (null !== $this->type) {
+            if (null === $this->type) {
                 return $value;
             }
 
