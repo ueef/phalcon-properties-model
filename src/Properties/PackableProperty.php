@@ -7,9 +7,7 @@ namespace Ueef\Phalcon\PropertiesModel\Properties {
 
     class PackableProperty extends EncodedProperty
     {
-        /**
-         * @var PackableInterface
-         */
+        /** @var PackableInterface */
         private $proto;
 
 
@@ -22,7 +20,7 @@ namespace Ueef\Phalcon\PropertiesModel\Properties {
 
         protected function pack($value)
         {
-            if ($value) {
+            if ($value && $value instanceof PackableInterface) {
                 $value = $value->pack();
             }
 
@@ -34,7 +32,8 @@ namespace Ueef\Phalcon\PropertiesModel\Properties {
             $value = parent::unpack($value);
 
             if ($value) {
-                $value = $this->proto::unpack($value);
+                $_value = clone $this->proto;
+                $_value->unpack($value);
             }
 
             return $value;
