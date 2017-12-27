@@ -23,7 +23,7 @@ namespace Ueef\Phalcon\PropertiesModel\Properties {
         public function notify($event, &$item)
         {
             if (
-                (self::EVENT_BEFORE_CREATE == $event && self::SET_ON_CREATE & $this->flags) &&
+                (self::EVENT_BEFORE_CREATE == $event && self::SET_ON_CREATE & $this->flags) ||
                 (self::EVENT_BEFORE_UPDATE == $event && self::SET_ON_UPDATE & $this->flags)
             ) {
                 $this->setValue($item, time());
