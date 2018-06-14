@@ -9,6 +9,9 @@
     "ueef/packable": "^0.2",
     "ueef/assignable": "^0.0.4"
   },
+  "require-dev": {
+    "phalcon/ide-stubs": "^3.2"
+  },
   "autoload": {
     "psr-4": {
       "Ueef\\Phalcon\\PropertiesModel\\": "src"
