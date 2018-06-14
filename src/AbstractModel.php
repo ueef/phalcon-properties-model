@@ -7,7 +7,8 @@ namespace Ueef\Phalcon\PropertiesModel {
 
     class AbstractModel extends Model
     {
-        protected static $modelsProperties = [];
+        /** @var PropertyInterface[][] */
+        protected static $models_properties = [];
 
 
         public function refresh()
@@ -63,8 +64,7 @@ namespace Ueef\Phalcon\PropertiesModel {
 
         protected function notifyProperties($event)
         {
-            $properties = &static::$modelsProperties[static::class];
-
+            $properties = &static::$models_properties[static::class];
             if (!$properties) {
                 $properties = [];
             }
@@ -76,7 +76,7 @@ namespace Ueef\Phalcon\PropertiesModel {
 
         protected function addProperty(PropertyInterface $property)
         {
-            static::$modelsProperties[static::class][] = $property;
+            static::$models_properties[static::class][] = $property;
         }
     }
 }
