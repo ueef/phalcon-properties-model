@@ -2,8 +2,8 @@
 
 namespace Ueef\Phalcon\PropertiesModel\Properties {
 
-    use Ueef\Packable\Interfaces\PackableInterface;
     use Ueef\Typer\Interfaces\TypeInterface;
+    use Ueef\Packable\Interfaces\PackableInterface;
 
     class PackableProperty extends EncodedProperty
     {
@@ -33,7 +33,7 @@ namespace Ueef\Phalcon\PropertiesModel\Properties {
 
             if ($value) {
                 $_value = clone $this->proto;
-                $_value->unpack($value);
+                $_value->assign($value);
             }
 
             return $value;
