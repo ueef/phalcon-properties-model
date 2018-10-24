@@ -7,7 +7,7 @@
     "ext-phalcon": ">=2.8",
     "ueef/typer": "^0.1",
     "ueef/packable": "^0.4",
-    "ueef/assignable": "^0.1"
+    "ueef/assignable": "*"
   },
   "require-dev": {
     "phalcon/ide-stubs": "^3.2"
