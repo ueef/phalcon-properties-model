@@ -2,15 +2,11 @@
 
 namespace Ueef\Phalcon\PropertiesModel\Properties {
 
-    use Ueef\Assignable\Traits\AssignableTrait;
-    use Ueef\Assignable\Interfaces\AssignableInterface;
     use Ueef\Phalcon\PropertiesModel\Interfaces\PropertyInterface;
     use Ueef\Typer\Interfaces\TypeInterface;
 
-    class RegularProperty implements PropertyInterface, AssignableInterface
+    class RegularProperty implements PropertyInterface
     {
-        use AssignableTrait;
-
         /** @var string */
         protected $key;
 
@@ -18,13 +14,13 @@ namespace Ueef\Phalcon\PropertiesModel\Properties {
         protected $type;
 
 
-        public function __construct(string $key, TypeInterface $type = null)
+        public function __construct($key, TypeInterface $type = null)
         {
             $this->key = $key;
             $this->type = $type;
         }
 
-        public function getKey(): string
+        public function getKey()
         {
             return $this->key;
         }

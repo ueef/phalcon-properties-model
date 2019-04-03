@@ -15,7 +15,7 @@ namespace Ueef\Phalcon\PropertiesModel\Interfaces {
         const EVENT_BEFORE_VALIDATION = 9;
 
 
-        public function getKey(): string;
+        public function getKey();
         public function notify($event, &$item);
     }
 }
