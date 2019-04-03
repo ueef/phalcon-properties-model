@@ -21,7 +21,7 @@ namespace Ueef\Phalcon\PropertiesModel\Properties {
                 $value = json_decode($value, true);
             }
 
-            return parent::pack($value);
+            return parent::unpack($value);
         }
     }
 }
