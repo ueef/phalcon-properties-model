@@ -13,11 +13,15 @@ namespace Ueef\Phalcon\PropertiesModel\Properties {
         /** @var TypeInterface */
         protected $type;
 
+        /** @var bool */
+        protected $nullable;
 
-        public function __construct($key, TypeInterface $type = null)
+
+        public function __construct($key, TypeInterface $type = null, $nullable = false)
         {
             $this->key = $key;
             $this->type = $type;
+            $this->nullable = $nullable;
         }
 
         public function getKey()
@@ -56,6 +60,10 @@ namespace Ueef\Phalcon\PropertiesModel\Properties {
 
         protected function pack($value)
         {
+            if ($this->nullable && null === $value) {
+                return $value;
+            }
+
             if (null === $this->type) {
                 return $value;
             }
@@ -65,6 +73,10 @@ namespace Ueef\Phalcon\PropertiesModel\Properties {
 
         protected function unpack($value)
         {
+            if ($this->nullable && null === $value) {
+                return $value;
+            }
+
             if (null === $this->type) {
                 return $value;
             }

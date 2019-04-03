@@ -13,10 +13,9 @@ namespace Ueef\Phalcon\PropertiesModel\Properties {
         protected $flags = 0;
 
 
-        public function __construct($key, TypeInterface $type, $flags = 0)
+        public function __construct($key, TypeInterface $type, $nullable, $flags = 0)
         {
-            parent::__construct($key, $type);
-
+            parent::__construct($key, $type, $nullable);
             $this->flags = $flags;
         }
 
