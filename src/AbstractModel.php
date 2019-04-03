@@ -10,13 +10,6 @@ namespace Ueef\Phalcon\PropertiesModel {
         /** @var PropertyInterface[][] */
         protected static $models_properties = [];
 
-
-        public function refresh()
-        {
-            parent::refresh();
-            $this->notifyProperties(PropertyInterface::EVENT_AFTER_FETCH);
-        }
-
         public function afterFetch()
         {
             $this->notifyProperties(PropertyInterface::EVENT_AFTER_FETCH);
